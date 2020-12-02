@@ -1,18 +1,45 @@
 ﻿using System;
 
-namespace _1000to7
+namespace Easter_Bake
 {
     class Program
     {
         static void Main(string[] args)
         {
-            for (int i = 7; i <= 997; i++)
+            int n = int.Parse(Console.ReadLine());
+
+            int maxSugar = 0;
+            int neededSugar = 0;
+
+            int maxFlour = 0;
+            int neededFlour = 0;
+
+            for (int i = 0; i < n; i++)
             {
-                if(i % 10 == 7)
+                int sugar = int.Parse(Console.ReadLine());
+                int flour = int.Parse(Console.ReadLine());
+
+                neededSugar += sugar;
+                neededFlour += flour;
+
+                if(maxSugar < sugar)
                 {
-                    Console.WriteLine(i);
+                    maxSugar = sugar;
+                }
+                if(maxFlour < flour)
+                {
+                    maxFlour = flour;
                 }
             }
+            double packetsSugar = (neededSugar*1.0) / 950;
+            packetsSugar = Math.Ceiling(packetsSugar);
+            Console.WriteLine($"Sugar: {packetsSugar}");
+
+            double packetsFlour = (neededFlour * 1.0) / 750;
+            packetsFlour = Math.Ceiling(packetsFlour);
+            Console.WriteLine($"Flour: {packetsFlour}");
+
+            Console.WriteLine($"Max used flour is {maxFlour} grams, max used sugar is {maxSugar} grams.");
         }
     }
 }
